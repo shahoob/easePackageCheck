@@ -31,7 +31,10 @@ You can find them in wiki
 but because there empty
 ill create them.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9daa9c832e05a667d6140a84464e3d3105874fd5
 ##### Message for all npm users
 if you see easePackageCheck's version is 1.1.0,
 i just was having problems to re-publish it to npm servers
