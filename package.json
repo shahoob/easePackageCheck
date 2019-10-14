@@ -12,5 +12,9 @@
     "checkNpm"
   ],
   "author": "Shehab Ali Tweel",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://github.com/shahoob/easePackageCheck"
+  }
 }
