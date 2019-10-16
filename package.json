@@ -9,12 +9,18 @@
   "keywords": [
     "check",
     "packageCheck",
-    "checkNpm"
+    "checkNpm",
+    "ifPackage",
+    "confirm"
   ],
-  "author": "Shehab Ali Tweel",
+  "author": {
+    "name": "Shehab Ali Tweel",
+    "email": "shehabtweel@gmail.com"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+ssh://github.com/shahoob/easePackageCheck"
-  }
+  },
+  "homepage": "https://github.com/shahoob/easePackageCheck#README"
 }
