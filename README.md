@@ -5,8 +5,12 @@ A package made users easy to check packages.
 1. Clone this repository by running `git clone https;//github.com/shahoob/easePackageCheck.git`
 2. run `npm install`
 
+Now installing it from [npm](npmjs.com) is now possible
+
+It's simple as `npm install easepackagecheck` right?
+
 ## What's New?
-In 1.1.0:
+In `1.1.0`:
 
 An New function is added which allows users to set settings using
 
