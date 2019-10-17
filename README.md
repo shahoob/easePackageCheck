@@ -10,6 +10,14 @@ Now installing it from [npm](npmjs.com) is now possible
 It's simple as `npm install easepackagecheck` right?
 
 ## What's New?
+In `1.2.0`:
+
+An Another New function is added which allows users to check package's version using
+
+```javascript
+easepackagecheck.checkPackageVer(package, version)
+```
+
 In `1.1.0`:
 
 An New function is added which allows users to set settings using

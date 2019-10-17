@@ -18,6 +18,30 @@ export.checkPackage = function(package) {
   }
 }
 
+export.checkPackageVer = function(package, version) {
+  if (version) {
+    if (fs.existsSync(path.join(process.cwd(), 'node_modules', package))) {
+      if (fs.existsSync(path.join(process.cwd(), 'node_modules', package, 'package.json')) {
+        var jsonPackageFile = fs.readFileSync(fs.existsSync(path.join(process.cwd(), 'node_modules', package, 'package.json'))
+        var jsonPackageObj = JSON.parse(jsonPackageFile)
+        if (jsonPackageObj.version() == version) {
+          return true;
+        } else {
+          return "outdated";
+        }
+      }
+      if (customlog1) {
+        console.log(customLog1)
+      }
+    } else {
+      return false
+      if (customLog0) {
+        console.log(customLog0)
+      }
+    }
+  }
+}
+
 export.setSetting = function(setting, value) {
   switch (setting) {
     case "customlog1":
