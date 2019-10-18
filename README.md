@@ -1,6 +1,9 @@
 # easePackageCheck
 A package made users easy to check packages.
 
+## How to `test` it out
+Simple, just run `npm test` nor `npm run test`. they do the same thing
+
 ## How to install
 1. Clone this repository by running `git clone https;//github.com/shahoob/easePackageCheck.git`
 2. run `npm install`

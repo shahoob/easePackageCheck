@@ -1,0 +1,21 @@
+{
+  "name": "easepackagecheck-test",
+  "version": "1.0.0",
+  "description": "no how dare you publish it run npm unpublish to approve it",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "run": "echo \"What? Noooooooo, run npm test instad so i will do the work for you! duh. \" && exit 1"
+  },
+  "author": "Shehab Ali Tweel",
+  "license": "MIT",
+  "dependencies": {
+    "easepackagecheck": "^1.2.0",
+    "request": "^2.88.0",
+    "terminal-image": "^0.2.0"
+  },
+  "optionalDependencies": {
+    "ora": "^4.0.2"
+  },
+  "private": true
+}
