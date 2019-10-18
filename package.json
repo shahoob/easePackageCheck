@@ -1,6 +1,6 @@
 {
   "name": "easepackagecheck",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A package made users easy to check packages.",
   "main": "index.js",
   "scripts": {

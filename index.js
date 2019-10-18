@@ -4,7 +4,7 @@ const path = require('path')
 let customLog1 = false;
 let customLog0 = false;
 
-export.checkPackage = function(package) {
+exports.checkPackage = function(package) {
   if (fs.existsSync(path.join(process.cwd(), 'node_modules', package))) {
     return true
     if (customlog1) {
@@ -18,7 +18,7 @@ export.checkPackage = function(package) {
   }
 }
 
-export.checkPackageVer = function(package, version) {
+exports.checkPackageVer = function(package, version) {
   if (version) {
     if (fs.existsSync(path.join(process.cwd(), 'node_modules', package))) {
       if (fs.existsSync(path.join(process.cwd(), 'node_modules', package, 'package.json')) {
@@ -42,7 +42,7 @@ export.checkPackageVer = function(package, version) {
   }
 }
 
-export.setSetting = function(setting, value) {
+exports.setSetting = function(setting, value) {
   switch (setting) {
     case "customlog1":
       customLog1 = value;
