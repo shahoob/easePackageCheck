@@ -2,9 +2,9 @@ const easepackagecheck = require('easepackagecheck');
 const request = require('request');
 const terminalImage = require('terminal-image');
 
-let ora;
-let spinner;
-let isOra;
+let ora = null;
+let spinner = null;
+let isOra = null;
 
 if (easepackagecheck.checkPackage('ora')) {
   ora = require('ora')
