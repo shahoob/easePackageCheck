@@ -1,19 +1,5 @@
-# easePackageCheck
+# easePackageCheck [![Build Status](https://travis-ci.com/shahoob/easePackageCheck.svg?branch=master)](https://travis-ci.com/shahoob/easePackageCheck)
 A package made users easy to check packages.
-
-## Some Fancy Markdown Statuses
-Travis CI Build Status: [![Build Status](https://travis-ci.com/shahoob/easePackageCheck.svg?branch=master)](https://travis-ci.com/shahoob/easePackageCheck)
-
-### What are those things?
-Actually, idk what those called, so i named a random one, Anyways
-They re-present something on a markdown file opened on markdown viewer or something,
-Like Travis CI Build Status, it shows the last build status, don't understand?
-There you go [![Build Status](https://travis-ci.com/shahoob/easePackageCheck.svg?branch=master)](https://travis-ci.com/shahoob/easePackageCheck), That's it.
-But if you try to open it yourself (like https://travis-ci.com/shahoob/easePackageCheck.svg?branch=master)
-it shows the same [![Build Status](https://travis-ci.com/shahoob/easePackageCheck.svg?branch=master)](https://travis-ci.com/shahoob/easePackageCheck)!
-Because it's an image file, means you can do anything to it!
-Also When you zoom in, You don't see any pixels, Because it's an SVG File,
-Means It's Always remains pixel-free forever and Ever. That's Good!
 
 ## How to `test` it out
 Simple, just run `npm test` nor `npm run test`. they do the same thing
