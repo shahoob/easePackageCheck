@@ -7,9 +7,9 @@ let spinner = null;
 let isOra = null;
 
 if (easepackagecheck.checkPackage('ora')) {
-  ora = require('ora')
+  ora = require('ora');
   spinner = ora('Downloading image...').start();
-  spinner.spinner = 'noise'
+  spinner.spinner = 'noise';
   isOra = true;
 } else {
   console.log("Downloading image...")

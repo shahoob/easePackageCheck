@@ -4,8 +4,7 @@
   "description": "no how dare you publish it run npm unpublish to approve it",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js",
-    "run": "echo \"What? Noooooooo, run npm test instad so i will do the work for you! duh. \" && exit 1"
+    "test": "node index.js"
   },
   "author": "Shehab Ali Tweel",
   "license": "MIT",

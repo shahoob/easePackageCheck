@@ -13,6 +13,12 @@ Now installing it from [npm](npmjs.com) is now possible
 It's simple as `npm install easepackagecheck` right?
 
 ## What's New?
+In `1.2.2`:
+i also patched another one, Thanks to Visual Studio Code
+There are syntax errors now fixed.
+
+Again, it `woooshed` over my head, got'em with help of Visual Studio Code.
+
 In `1.2.1`:
 
 I patched a 1 problem that i missed just like it woooshed over my head then got it now.
@@ -44,9 +50,9 @@ Or `changing the export with exports`
 Still not being able to understand?
 Here's The `Before` And `After`
 
-#### The Before And After
+#### The `Before` And `After`
 
-##### Before
+##### `Before`
 
 ```javascript
 
@@ -109,7 +115,7 @@ export.setSetting = function(setting, value) {
 
 ```
 
-#### After
+##### `After`
 
 ```javascript
 const fs = require('fs')

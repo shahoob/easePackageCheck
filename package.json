@@ -1,6 +1,6 @@
 {
   "name": "easepackagecheck",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A package made users easy to check packages.",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,9 @@
     "packageCheck",
     "checkNpm",
     "ifPackage",
-    "confirm"
+    "checkifinstalled",
+    "Check if package is installed",
+    "Package To check if an package is installed"
   ],
   "author": {
     "name": "Shehab Ali Tweel",
