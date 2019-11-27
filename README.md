@@ -1,4 +1,4 @@
-# easePackageCheck [![Build Status](https://travis-ci.com/shahoob/easePackageCheck.svg?branch=master)](https://travis-ci.com/shahoob/easePackageCheck)
+# easePackageCheck [![Build Status](https://travis-ci.com/shahoob/easePackageCheck.svg?branch=master)](https://travis-ci.com/shahoob/easePackageCheck) ![npm](https://img.shields.io/npm/dt/easepackagecheck)
 A package made users easy to check packages.
 
 ## How to `test` it out
