@@ -49,10 +49,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Install Dependencies on Windows
-        uses: actions/checkout@v1
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
         run: npm install
 
 
@@ -94,10 +90,6 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Install Dependencies on macOS
-        uses: actions/checkout@v1
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
         run: npm install
 
   build-macos:
