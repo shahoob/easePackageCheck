@@ -1,45 +1,138 @@
-name: Node.js Package
+name: Node.js Package With Discord
 
 on:
   release:
     types: [created]
 
 jobs:
-  build:
+  build-ubuntu:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - name: Send Discord Before Build On Ubuntu
+        env:
+          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK}}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: '{{EVENT_PAYLOAD.repository.full_name}} Build On Ubuntu Started.'
+      - name: Build on Ubuntu
+        uses: actions/checkout@v1
+        uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: npm ci
-      - run: npm test
-
-  publish-npm:
-    needs: build
+        run: npm ci
+        run: npm test
+      - name: Send Discord After Build On Ubuntu
+        env:
+          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK}}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: '{{EVENT_PAYLOAD.repository.full_name}} Build On Ubuntu completed.'
+  
+  send-discord1:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+     - name: Send Discord Before Build on Windows
+       uses: Ilshidur/action-discord@master
+       env:
+         DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK}}
+       with:
+        args: '{{EVENT_PAYLOAD.repository.full_name}} Build On Windows Started.'
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Build on Windows
+        uses: actions/checkout@v1
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+        run: npm ci
+        run: npm test
+  
+  send-discord2:
+    runs-on: ubuntu-latest
+    steps:
+     - name: Send Discord Before Build on Windows
+       uses: Ilshidur/action-discord@master
+       env:
+         DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK}}
+       with:
+        args: '{{EVENT_PAYLOAD.repository.full_name}} Build On Windows completed.'
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - name: Send Discord Before Build On Ubuntu
+        env:
+          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK}}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: '{{EVENT_PAYLOAD.repository.full_name}} Build On macOS Started.'
+      - name: Build On macOS
+        uses: actions/checkout@v1
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+        run: npm ci
+        run: npm test
+      - name: Send Discord After Build On Ubuntu
+        env:
+          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK}}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: '{{EVENT_PAYLOAD.repository.full_name}} Build On macOS completed.'
+  
+  publish-npm:
+    needs: [build-ubuntu, send-discord1, build-windows, send-discord2, build-macos]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Discord Before Publish on npm registry
+        env:
+          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK}}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: '{{EVENT_PAYLOAD.repository.full_name}} is being published on npm regstry...'
+      - name: Publish on npm
+        uses: actions/checkout@v1
+        uses: actions/setup-node@v1
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm publish
+        run: npm ci
+        run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{secrets.npm_TOKEN}}
+      - name: Send Discord After Publish on npm registry
+        env:
+          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK}}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: '{{EVENT_PAYLOAD.repository.full_name}} is now published on npm regstry.'
 
   publish-gpr:
-    needs: build
+    needs: [build-ubuntu, send-discord1, build-windows, send-discord2, build-macos]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - name: Send Discord Before Publish on Github Packages registry
+        env:
+          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK}}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: '{{EVENT_PAYLOAD.repository.full_name}} is being published on Github Packages regstry...'
+      - name: Publish on Github Packages
+        uses: actions/checkout@v1
+        uses: actions/setup-node@v1
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
           scope: '@shahoob'
-      - run: npm ci
-      - run: npm publish
+        run: npm ci
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Send Discord After Publish on Github Packages registry
+        env:
+          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK}}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: '{{EVENT_PAYLOAD.repository.full_name}} is now published on Github Packages regstry.'
