@@ -5,7 +5,24 @@ on:
     types: [created]
 
 jobs:
+  send-discord3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Discord Before install on Windows, macOS And Ubuntu
+        env:
+          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK}}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: 'Installing Dependencies on Ubuntu, macOS And Windows...'
+
+  install-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Dependencies on Ubuntu
+        run: npm install
+
   build-ubuntu:
+    needs: install-ubuntu
     runs-on: ubuntu-latest
     steps:
       - name: Send Discord Before Build On Ubuntu
@@ -13,7 +30,7 @@ jobs:
           DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK}}
         uses: Ilshidur/action-discord@master
         with:
-          args: '{{EVENT_PAYLOAD.repository.full_name}} Build On Ubuntu Started.'
+          args: '{{EVENT_PAYLOAD.repository.full_name}} Install Dependencies on Ubuntu completed. Build On Ubuntu Started.'
       - name: Build on Ubuntu
         uses: actions/checkout@v1
         uses: actions/setup-node@v1
@@ -28,7 +45,19 @@ jobs:
         with:
           args: '{{EVENT_PAYLOAD.repository.full_name}} Build On Ubuntu completed.'
   
+  install-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Install Dependencies on Windows
+        uses: actions/checkout@v1
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+        run: npm install
+
+
   send-discord1:
+    needs: install-windows
     runs-on: ubuntu-latest
     steps:
      - name: Send Discord Before Build on Windows
@@ -39,6 +68,7 @@ jobs:
         args: '{{EVENT_PAYLOAD.repository.full_name}} Build On Windows Started.'
 
   build-windows:
+    needs: [send-discord1, install-windows]
     runs-on: windows-latest
     steps:
       - name: Build on Windows
@@ -50,6 +80,7 @@ jobs:
         run: npm test
   
   send-discord2:
+    needs: [send-discord1, install-windows]
     runs-on: ubuntu-latest
     steps:
      - name: Send Discord Before Build on Windows
@@ -59,7 +90,18 @@ jobs:
        with:
         args: '{{EVENT_PAYLOAD.repository.full_name}} Build On Windows completed.'
 
+  install-macos:
+    runs-on: macos-latest
+    steps:
+      - name: Install Dependencies on macOS
+        uses: actions/checkout@v1
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+        run: npm install
+
   build-macos:
+    needs: install-macos
     runs-on: macos-latest
     steps:
       - name: Send Discord Before Build On Ubuntu
@@ -83,7 +125,7 @@ jobs:
           args: '{{EVENT_PAYLOAD.repository.full_name}} Build On macOS completed.'
   
   publish-npm:
-    needs: [build-ubuntu, send-discord1, build-windows, send-discord2, build-macos]
+    needs: [install-ubuntu, build-ubuntu, install-windows, send-discord1, build-windows, send-discord2, install-macos, build-macos]
     runs-on: ubuntu-latest
     steps:
       - name: Send Discord Before Publish on npm registry
