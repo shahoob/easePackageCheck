@@ -4,21 +4,21 @@ const path = require('path')
 let customLog1 = false;
 let customLog0 = false;
 
-exports.checkPackage = function (package) {
+module.exports.checkPackage = function (package) {
   if (fs.existsSync(path.join(process.cwd(), 'node_modules', package))) {
-    return true
-    if (customlog1) {
+    if (customLog1) {
       console.log(customLog1)
     }
+    return true;
   } else {
-    return false
     if (customLog0) {
       console.log(customLog0)
     }
+    return false;
   }
 }
 
-exports.checkPackageVer = function (package, version) {
+module.exports.checkPackageVer = function (package, version) {
     if (version) {
       if (fs.existsSync(path.join(process.cwd(), 'node_modules', package))) {
         if (fs.existsSync(path.join(process.cwd(), 'node_modules', package, 'package.json'))) {
@@ -34,15 +34,15 @@ exports.checkPackageVer = function (package, version) {
               console.log(customLog1)
             }
           } else {
-            return false;
             if (customLog0) {
               console.log(customLog0)
             }
+            return false;
           }
         }
       }
 
-      exports.checkPackage_try = function (package) {
+      module.exports.checkPackage_try = function (package) {
         try {
           return require(package);
         } catch (error) {
@@ -50,7 +50,7 @@ exports.checkPackageVer = function (package, version) {
         }
       }
 
-      exports.setSetting = function (setting, value) {
+      module.exports.setSetting = function (setting, value) {
         switch (setting) {
           case "customlog1":
             customLog1 = value;

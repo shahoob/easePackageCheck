@@ -1,4 +1,4 @@
-# easePackageCheck [![Build Status](https://travis-ci.com/shahoob/easePackageCheck.svg?branch=master)](https://travis-ci.com/shahoob/easePackageCheck) ![npm](https://img.shields.io/npm/dt/easepackagecheck)
+# easePackageCheck [![Build Status](https://travis-ci.com/shahoob/easePackageCheck.svg?branch=master)](https://travis-ci.com/shahoob/easePackageCheck) ![npm](https://img.shields.io/npm/v/easepackagecheck?label=%20&logo=npm) ![GitHub package.json version](https://img.shields.io/github/package-json/v/shahoob/easePackageCheck)
 A package made users easy to check packages.
 
 ## How to `test` it out
@@ -13,6 +13,11 @@ Now installing it from [npm](npmjs.com) is now possible
 It's simple as `npm install easepackagecheck` right?
 
 ## What's New?
+In `1.2.2`:
+I patched another one, that made `easePackageCheck` won't work for newer version for [Node.js](nodejs.com) (I think).
+I replaced `exports` with `module.exports`.
+And right now, The version `1.2.3` is the first, only, working version that `easePackageCheck` is.
+
 In `1.2.2`:
 i also patched another one, Thanks to Visual Studio Code
 There are syntax errors now fixed.
