@@ -1,49 +1,26 @@
-name: Node.js Package With Discord
+name: Node.js Package
 
 on:
   release:
     types: [created]
 
-jobs:
-  send-discord3:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Send Discord Before install on Windows, macOS And Ubuntu
-        env:
-          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK}}
-        uses: Ilshidur/action-discord@master
-        with:
-          args: 'Installing Dependencies on Ubuntu, macOS And Windows...'
+jobs: 
 
   install-ubuntu:
     runs-on: ubuntu-latest
     steps:
-      - name: Install Dependencies on Ubuntu
-        run: npm install
+      -  run: npm install
 
   build-ubuntu:
     needs: install-ubuntu
     runs-on: ubuntu-latest
     steps:
-      - name: Send Discord Before Build On Ubuntu
-        env:
-          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK}}
-        uses: Ilshidur/action-discord@master
-        with:
-          args: '{{EVENT_PAYLOAD.repository.full_name}} Install Dependencies on Ubuntu completed. Build On Ubuntu Started.'
-      - name: Build on Ubuntu
-        uses: actions/checkout@v1
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-        run: npm ci
-        run: npm test
-      - name: Send Discord After Build On Ubuntu
-        env:
-          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK}}
-        uses: Ilshidur/action-discord@master
-        with:
-          args: '{{EVENT_PAYLOAD.repository.full_name}} Build On Ubuntu completed.'
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+      - with:
+         node-version: 12
+      - run: npm ci
+      - run: npm test
   
   install-windows:
     runs-on: windows-latest
@@ -51,40 +28,17 @@ jobs:
       - name: Install Dependencies on Windows
         run: npm install
 
-
-  send-discord1:
-    needs: install-windows
-    runs-on: ubuntu-latest
-    steps:
-     - name: Send Discord Before Build on Windows
-       uses: Ilshidur/action-discord@master
-       env:
-         DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK}}
-       with:
-        args: '{{EVENT_PAYLOAD.repository.full_name}} Build On Windows Started.'
-
   build-windows:
-    needs: [send-discord1, install-windows]
+    needs: install-windows
     runs-on: windows-latest
     steps:
       - name: Build on Windows
-        uses: actions/checkout@v1
-        uses: actions/setup-node@v1
-        with:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+      - with:
           node-version: 12
-        run: npm ci
-        run: npm test
-  
-  send-discord2:
-    needs: [send-discord1, install-windows]
-    runs-on: ubuntu-latest
-    steps:
-     - name: Send Discord Before Build on Windows
-       uses: Ilshidur/action-discord@master
-       env:
-         DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK}}
-       with:
-        args: '{{EVENT_PAYLOAD.repository.full_name}} Build On Windows completed.'
+      - run: npm ci
+      - run: npm test
 
   install-macos:
     runs-on: macos-latest
@@ -96,23 +50,11 @@ jobs:
     needs: install-macos
     runs-on: macos-latest
     steps:
-      - name: Send Discord Before Build On Ubuntu
-        env:
-          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK}}
-        uses: Ilshidur/action-discord@master
-        with:
-          args: '{{EVENT_PAYLOAD.repository.full_name}} Build On macOS Started.'
-      - name: Build On macOS
-        uses: actions/checkout@v1
-        uses: actions/setup-node@v1
-        with:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+      - with:
           node-version: 12
-        run: npm ci
-        run: npm test
-      - name: Send Discord After Build On Ubuntu
-        env:
-          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK}}
-        uses: Ilshidur/action-discord@master
-        with:
-          args: '{{EVENT_PAYLOAD.repository.full_name}} Build On macOS completed.'
+      - run: npm ci
+      - run: npm test
+     
   
