@@ -222,3 +222,8 @@ if you see easePackageCheck's version is 1.1.0,
 i just was having problems to re-publish it to npm servers
 just forgot to add repository field to package.json :\
 so only 1.1.0 i can publish it. sorry :(
+
+## Well why i see the build statuses are erroring?
+Because of syntax errors (For GitHub Actions Only).
+Even i have correct syntax for my github workflow, It's an error that 'every step must have `uses` and `runs` defined'.
+for GitHub Actions, It has bugs, So that's why.
