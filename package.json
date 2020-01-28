@@ -4,7 +4,10 @@
   "description": "A package made users easy to check packages.",
   "main": "index.js",
   "scripts": {
-    "test": "node ./test/index.js"
+    "test": "node ./test/index.js",
+    "eslint-main": "npx eslint index.js",
+    "eslint-test": "npx eslint test/index.js",
+    "eslint": "npx eslint"
   },
   "keywords": [
     "check",
@@ -17,7 +20,7 @@
   ],
   "author": {
     "name": "Shehab Ali Tweel",
-    "email": "shehabtweel@gmail.com"
+    "email": "shehabtweel@icloud.com"
   },
   "license": "MIT",
   "repository": {
