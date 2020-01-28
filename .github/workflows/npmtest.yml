@@ -6,13 +6,8 @@ on:
 
 jobs: 
 
-  install-ubuntu:
-    runs-on: ubuntu-latest
-    steps:
-      -  run: npm install
 
   build-ubuntu:
-    needs: install-ubuntu
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -21,14 +16,8 @@ jobs:
          node-version: 12
       - run: npm ci
       - run: npm test
-  
-  install-windows:
-    runs-on: windows-latest
-    steps:
-      - run: npm install
 
   build-windows:
-    needs: install-windows
     runs-on: windows-latest
     steps:
       - name: Build on Windows
@@ -39,14 +28,7 @@ jobs:
       - run: npm ci
       - run: npm test
 
-  install-macos:
-    runs-on: macos-latest
-    steps:
-      - name: Install Dependencies on macOS
-        run: npm install
-
   build-macos:
-    needs: install-macos
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v1
